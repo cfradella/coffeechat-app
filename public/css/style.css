@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
 :root {
 	--dark-color-a: #a63e02;
@@ -14,10 +14,11 @@
 	padding: 0;
 }
 
-body {``
-	font-family: 'Roboto', sans-serif;
+body {
+	font-family: 'Montserrat', sans-serif;
 	font-size: 16px;
-	background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+	background: linear-gradient(to right, #0d262e, #1D4350, #0d262e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 	margin: 20px;
 }
 
@@ -28,21 +29,19 @@ ul {
 a {
 	text-decoration: none;
 }
-
-/* .fa-acorn {
-	color: white !important;
-	background-color: white;
-} */
+input {
+	margin-right: 15px;
+}
 
 .btn {
 	cursor: pointer;
 	padding: 5px 15px;
 	background: var(--light-color);
-	color: var(--dark-color-a);
+	color: #424242;
 	border: 0;
 	border-radius: 15px;
 	font-size: 17px;
-	font-weight: bold;
+	font-weight: 1000;
 }
 .btn:hover {
 	opacity: 80%
@@ -56,6 +55,8 @@ a {
 	margin: 30px auto;
 	overflow: hidden;
 	border-radius: 30px;
+	border: 2px solid brown;
+	box-shadow: 7px 10px 20px black;
 }
 
 .chat-header {
@@ -148,14 +149,15 @@ a {
 	max-width: 500px;
 	margin: 80px auto;
 	color: #fff;
+	box-shadow: 7px 10px 20px black;
 }
 
 .join-header {
 	text-align: center;
 	padding: 20px;
 	background: var(--dark-color-a);
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
 }
 
 .join-main {
