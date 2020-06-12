@@ -77,7 +77,7 @@ i {
 
 .chat-main {
 	display: grid;
-	grid-template-columns: 1fr 4fr;
+	grid-template-columns: 2fr 7fr;
 }
 
 .chat-msg {

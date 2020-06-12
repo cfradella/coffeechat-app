@@ -15,7 +15,7 @@ socket.emit('joinRoom', { username, room });
 // Get room and Users
 socket.on('roomUsers', ({ room, users}) => {
   const userCount = Object.keys(users).length;
-  usersOnline.innerHTML = `Users Online ( ${userCount} )`
+  usersOnline.innerHTML = `<i class="fas fa-users"></i> Users Online ( ${userCount} )`
   outputRoomName(room);
   outputUsers(users);
 })
