@@ -18,9 +18,10 @@ io.on('connection', socket => {
     const user = userJoin(socket.id, username, room);
 
     socket.join(user.room);
-
+    socket.emit('bing', true);
+    
     // Welcome current user
-    socket.emit('message', formatMessage(botName, 'Welcome to CoffeeChat!'))
+    socket.emit('message', formatMessage(botName, `You have joined ${room} chat.`))
 
     // When a user connects
     socket.broadcast.to(user.room).emit(
