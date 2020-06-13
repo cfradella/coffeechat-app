@@ -9,7 +9,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
-const botName = 'System';
+const admin = 'admin';
 
 app.use(express.static(path.join(__dirname, 'public')))
 
@@ -19,14 +19,14 @@ io.on('connection', socket => {
 
     socket.join(user.room);
     socket.emit('bing', true);
-    
+
     // Welcome current user
-    socket.emit('message', formatMessage(botName, `You have joined ${room} chat.`))
+    socket.emit('message', formatMessage(admin, `You have joined ${room} chat.`, true))
 
     // When a user connects
     socket.broadcast.to(user.room).emit(
       'message',
-      formatMessage(botName, `${user.username} has joined the chat.`))
+      formatMessage(admin, `${user.username} has joined the chat.`, true))
 
     // Send users and room info
     io.to(user.room).emit('roomUsers', {
@@ -38,7 +38,7 @@ io.on('connection', socket => {
   // Listen for chat message
   socket.on('chatMessage', msg => {
     const user = getCurrentUser(socket.id);
-    io.to(user.room).emit('message', formatMessage(user.username, msg))
+    io.to(user.room).emit('message', formatMessage(user.username, msg, false))
   })
 
   // When a user disconnects
@@ -46,7 +46,7 @@ io.on('connection', socket => {
     const user = userLeave(socket.id);
 
     if (user) {
-      io.to(user.room).emit('message', formatMessage(botName, `${user.username} has left the chat.`))
+      io.to(user.room).emit('message', formatMessage(admin, `${user.username} has left the chat.`, true))
 
       // Send users and room info
       io.to(user.room).emit('roomUsers', {

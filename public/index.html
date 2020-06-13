@@ -21,29 +21,38 @@
 				<h1><img class="coffee-logo" src="https://image.flaticon.com/icons/png/512/2935/2935413.png"></img><span class="logo-c">C</span>offee<span class="logo-c">C</span>hat</h1>
 			</header>
 			<main class="join-main">
-				<form action="chat.html">
+				<form id='login-form' action="chat.html">
 					<div class="form-control">
 						<label for="username">Username</label>
 						<input
 							type="text"
 							name="username"
-							maxlength="12"
+							maxlength="22"
+							required
 							id="username"
 							placeholder="Enter username..."
-							required
 						/>
 					</div>
 					<div class="form-control">
 						<label for="room">Room</label>
-						<select name="room" id="room">
-							<option value="Haven">Haven</option>
-							<option value="Outlands">Outlands</option>
-							<option value="Melancholy">Melancholy</option>
-						</select>
+						<div style="display: flex; align-items: center;">
+							<select name="room" id="room-dropdown">
+								<option value="Haven">Haven</option>
+								<option value="Outlands">Outlands</option>
+								<option value="Brainstorm">Brainstorm</option>
+								<option value="Otter">Otter</option>
+								<option value="Cumulus">Cumulus</option>
+								<option value="Teapot">Teapot</option>
+								<option value="Mars Rover">Mars Rover</option>
+							</select>
+							<i onclick="newRoom()" id="new-room-btn" class="fas fa-plus"></i>
+						</div>
 					</div>
 					<button id="join-btn" type="submit" class="btn">Join Chat </button>
 				</form>
 			</main>
 		</div>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="js/index.js"></script>
 	</body>
 </html>

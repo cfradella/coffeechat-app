@@ -31,19 +31,31 @@ a {
 }
 
 input {
+	border-radius: 6px;
 	margin-right: 15px;
+	border: 0;
+}
+
+select {
+	border: 0;
+	border-radius: 6px;
+	padding: 0px 10px;
 }
 
 i {
 	margin-right: 10px;
 }
 
+button {
+	border: 3px solid orange;
+}
+
 .btn {
+	border: 3px solid orange;
 	cursor: pointer;
 	padding: 5px 15px;
 	background: white;
 	color: #424242;
-	border: 0;
 	border-radius: 15px;
 	font-size: 17px;
 	font-weight: 1000;
@@ -88,6 +100,7 @@ i {
 .chat-msg-system {
 	font-style: italic;
 	font-size: 14px;
+	margin-left: 25px;
 }
 
 .chat-sidebar {
@@ -215,20 +228,19 @@ i {
 }
 
 #join-btn {
-	width: 50%;
+	width: 40%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	margin: 0 auto;
-	border: 1px solid #5c5c5c;
 }
 
-input:focus, select:focus {
-	outline:none;
+input:focus, select:focus, button:focus {
+	outline: none;
 }
 
 .logo-c {
-	color: white/* #e6a47e; */
+	color: white /* #e6a47e; */
 }
 
 #logo-h1 {
@@ -240,8 +252,58 @@ input:focus, select:focus {
 	user-select: none;
 }
 
+#room-dropdown {
+	width: 87%;
+}
+
+#room-dropdown, #new-room-btn {
+	/* box-sizing:content-box; */
+	border:0;
+	/* padding: 5px; */
+	/* height:40px; */
+	font-size: 16px;
+}
+
+.swal-modal {
+  vertical-align: inherit;
+}
+
+.swal-button {
+	background-color: var(--dark-color-b);
+	font-weight: normal;
+}
+
+#new-room-btn {
+	/* display: inline-block; */
+	width: 38px;
+	height: 38px;
+	padding: 7px;
+	border-radius: 50%;
+	/* padding-top: 5px; */
+	margin: 0 auto;
+	border: 3px solid orange;
+	text-align: center;
+	cursor: pointer;
+	/* display: table-cell;
+  vertical-align: middle; */
+	/* background: url('https://image.flaticon.com/icons/svg/32/32339.svg') no-repeat;
+	background-size: auto; */
+}
+
+#new-room-btn:hover {
+	opacity: 80%;
+}
+
 #room-name {
 	font-size: 16px;
+}
+
+.text {
+	padding-top: 5px;
+}
+
+.timestamp {
+	font-size: 12px;
 }
 
 @media (max-width: 700px) {
