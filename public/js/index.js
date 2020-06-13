@@ -22,14 +22,14 @@ function newRoom(){
        swal("Please choose a room name.").then(() => newRoom())
        return;
     } else {
-      window.location = `http://localhost:3000/chat.html?username=${username.value}&room=${roomName}`
+      window.location = `http://my-coffee-chat.herokuapp.com/chat.html?username=${username.value}&room=${roomName}`
     }
   })
 }
 
 function chooseRoom(){
   return swal({
-    text: 'What room would you like to join?', 
+    text: 'What room would you like to join?',
     content: "input",
     button: {
       text: "Join!",
