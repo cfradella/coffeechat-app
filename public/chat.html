@@ -14,7 +14,10 @@
   <div class="chat-container">
     <header class="chat-header">
       <h1 id='logo-h1'><img class="coffee-logo" src="https://image.flaticon.com/icons/png/512/2935/2935413.png"></img><span class="logo-c"> C</span>offee<span class="logo-c">C</span>hat</h1>
-      <a href="index.html" class="btn">Leave Room</a>
+      <div>
+        <button onclick="createdInviteUserLink()" id="invite-btn" class="btn">Invite</button>
+        <a id="leave-room" href="index.html" class="btn">Leave Room</a>
+      </div>
     </header>
     <main class="chat-main">
       <div class="chat-sidebar">
@@ -41,7 +44,8 @@
     </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.4/qs.min.js" integrity="sha256-ijqLssetA1NMNjZ+w1zaUafQQLm4IW5OoM8O+4tatME=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/chat.js"></script>
 </body>
 </html>

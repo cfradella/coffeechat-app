@@ -9,8 +9,7 @@
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
 			integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
 			crossorigin="anonymous"/>
-		<link rel="shortcut icon"
-    	href="https://image.flaticon.com/icons/png/512/2935/2935413.png"/>
+		<link rel="shortcut icon" href="https://image.flaticon.com/icons/png/512/2935/2935413.png"/>
 		<link rel="stylesheet" href="css/style.css" />
 		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 		<title>CoffeeChat</title>
@@ -18,7 +17,10 @@
 	<body>
 		<div class="join-container">
 			<header class="join-header">
-				<h1><img class="coffee-logo" src="https://image.flaticon.com/icons/png/512/2935/2935413.png"></img><span class="logo-c">C</span>offee<span class="logo-c">C</span>hat</h1>
+				<h1>
+					<img class="coffee-logo" src="https://image.flaticon.com/icons/png/512/2935/2935413.png"></img>
+					<span class="logo-c">C</span>offee<span class="logo-c">C</span>hat
+				</h1>
 			</header>
 			<main class="join-main">
 				<form id='login-form' action="chat.html">
@@ -26,7 +28,7 @@
 						<label for="username">Username</label>
 						<input
 							type="text"
-							name="username"
+							name="v53r"
 							maxlength="22"
 							required
 							id="username"
@@ -36,7 +38,7 @@
 					<div class="form-control">
 						<label for="room">Room</label>
 						<div style="display: flex; align-items: center;">
-							<select name="room" id="room-dropdown">
+							<select name="r0o3" id="room-dropdown">
 								<option value="Haven">Haven</option>
 								<option value="Outlands">Outlands</option>
 								<option value="Brainstorm">Brainstorm</option>
@@ -53,6 +55,7 @@
 			</main>
 		</div>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
 	<script src="js/index.js"></script>
 	</body>
 </html>

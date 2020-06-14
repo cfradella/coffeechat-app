@@ -8,10 +8,20 @@ const { userJoin, getCurrentUser, userLeave, getRoomUsers } = require('./utils/u
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
+// const router = express.Router();
 
 const admin = 'admin';
 
 app.use(express.static(path.join(__dirname, 'public')))
+
+app.get('/invite', (req, res) => {
+  const invitedRoom = req.query.r0o3
+  console.log("Current room: " + invitedRoom);
+  res.sendFile('public/chat.html', { root: __dirname });
+  io.on('connection', socket => {
+    socket.emit('invited', invitedRoom);
+  })
+})
 
 io.on('connection', socket => {
   socket.on('joinRoom', ({ username, room }) => {
@@ -59,5 +69,4 @@ io.on('connection', socket => {
 
 const PORT = process.env.PORT || '3000';
 
-
-server.listen(PORT, () => console.log(`Server running on port ${PORT}`))
+server.listen(PORT, () => console.log(`Server is running on port ${PORT}`))

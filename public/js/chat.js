@@ -2,17 +2,45 @@ const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector('.chat-messages');
 const roomName = document.getElementById('room-name');
 const userList = document.getElementById('users');
-const usersOnline = document.getElementById('users-online')
+const usersOnline = document.getElementById('users-online');
 const socket = io();
 
 // Get username and room from url
-const { username, room } = Qs.parse(location.search, {
+let { v53r, r0o3 } = Qs.parse(location.search, {
   ignoreQueryPrefix: true
 });
 
-//window.location = "http://localhost:3000/chat.html"
-// Join chatroom
-//if (window.location != "http://localhost:3000/chat.html") socket.emit('joinRoom', { username, room });
+// Decode from Base64
+// try {
+//   v53r = atob(v53r)
+//   r0o3 = atob(r0o3)
+// } catch(e) {
+//
+// }
+if (v53r && v53r[v53r.length-1] == "=") v53r = atob(v53r);
+if (r0o3 && r0o3[r0o3.length-1] == "=") r0o3 = atob(r0o3);
+
+const username = v53r || null;
+const room = r0o3 || null;
+
+socket.on('invited', invitedRoom => {
+  if (window.location.href.indexOf('test') == -1) return;
+  invitedUserChooseUsername(invitedRoom)
+    .then( invitedUserName => {
+      const u = invitedUserName;
+      // const r = btoa(invitedRoom);
+      window.location = `https://my-coffee-chat.herokuapp.com/chat.html?v53r=${u}&r0o3=${invitedRoom}`
+    })
+})
+
+socket.on('regular-join', datam => {
+  let { v53r, r0o3 } = Qs.parse(location.search, {
+    ignoreQueryPrefix: true
+  });
+  username = atob(v53r);
+  room = atob(r0o3);
+})
+
 socket.emit('joinRoom', { username, room });
 
 // Get room and Users
@@ -32,12 +60,12 @@ socket.on('message', message => {
 })
 
 // Bing sound on log in
-socket.on('bing', () => {
-  const bing = document.getElementById('bing-sound');
-  setTimeout(() => {
-    bing.play();
-  }, 100)
-})
+// socket.on('bing', () => {
+//   const bing = document.getElementById('bing-sound');
+//   setTimeout(() => {
+//     bing.play();
+//   }, 100)
+// })
 
 // Message submit
 chatForm.addEventListener('submit', e => {
@@ -85,6 +113,11 @@ function outputMessage(message){
 
 // Add room name to DOM
 function outputRoomName(room){
+  // try {
+  //   room = atob(room);
+  // } catch(e) {
+  //   room = room;
+  // }
   roomName.innerText = room;
 }
 
@@ -101,4 +134,20 @@ function createSanitizedElement(elType, elText, elId, elClass) {
   if (elId) el.id = elId;
   if (elText) el.appendChild(document.createTextNode(elText));
   return el;
+}
+
+function invitedUserChooseUsername(){
+  return swal({
+    text: "You've been invited to a CoffeeChat! Please choose a username before joining.",
+    content: "input",
+    button: {
+      text: "Join!",
+      closeModal: true,
+    }
+  })
+}
+
+function createdInviteUserLink(){
+  return swal(`Share the following URL to invite someone to this chat!\n\nhttps://my-coffee-chat.herokuapp.com/test?r0o3=${btoa(r0o3)}`)
+
 }
