@@ -126,8 +126,8 @@ function outputUsers(users){
   userList.innerHTML = '';
   users.forEach(user => {
     if (user && user[user.length-1] == "=") user = atob(user);
-    userList.appendChild(createSanitizedElement('li', user.username, null, null)))
-  }
+    userList.appendChild(createSanitizedElement('li', user.username, null, null))
+  })
 }
 
 // Sanitizing the user's input for error-prone/harmful data
