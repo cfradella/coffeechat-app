@@ -24,7 +24,7 @@ const username = v53r || null;
 const room = r0o3 || null;
 
 socket.on('invited', invitedRoom => {
-  if (window.location.href.indexOf('test') == -1) return;
+  if (window.location.href.indexOf('invite') == -1) return;
   invitedUserChooseUsername(invitedRoom)
     .then( invitedUserName => {
       const u = invitedUserName;
@@ -148,6 +148,6 @@ function invitedUserChooseUsername(){
 }
 
 function createdInviteUserLink(){
-  return swal(`Share the following URL to invite someone to this chat!\n\nhttps://my-coffee-chat.herokuapp.com/test?r0o3=${btoa(r0o3)}`)
+  return swal(`Share the following URL to invite someone to this chat!\n\nhttps://my-coffee-chat.herokuapp.com/invite?r0o3=${btoa(r0o3)}`)
 
 }
