@@ -124,7 +124,10 @@ function outputRoomName(room){
 // Add users to DOM
 function outputUsers(users){
   userList.innerHTML = '';
-  users.forEach(user => userList.appendChild(createSanitizedElement('li', user.username, null, null)))
+  users.forEach(user => {
+    if (user && user[user.length-1] == "=") user = atob(user);
+    userList.appendChild(createSanitizedElement('li', user.username, null, null)))
+  }
 }
 
 // Sanitizing the user's input for error-prone/harmful data
