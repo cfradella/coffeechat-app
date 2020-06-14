@@ -29,7 +29,7 @@ socket.on('invited', invitedRoom => {
     .then( invitedUserName => {
       const u = invitedUserName;
       // const r = btoa(invitedRoom);
-      window.location = `https://my-coffee-chat.herokuapp.com/chat.html?v53r=${u}&r0o3=${invitedRoom}`
+      window.location = `https://my-coffee-chat.herokuapp.com/chat.html?v53r=${u}&r0o3=${invitedRoom}` || `http://localhost:3000/chat.html?v53r=${u}&r0o3=${invitedRoom}`
     })
 })
 

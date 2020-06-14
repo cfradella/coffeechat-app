@@ -14,7 +14,7 @@ loginForm.addEventListener('submit', e => {
   // roomValue = btoa(roomValue);
 
   // socket.emit('regular-join', [usernameValue, roomValue]);
-  window.location = `https://my-coffee-chat.herokuapp.com/chat.html?${formEls[0].name}=${btoa(usernameValue)}&${formEls[1].name}=${btoa(roomValue)}`
+  window.location = `https://my-coffee-chat.herokuapp.com/chat.html?${formEls[0].name}=${btoa(usernameValue)}&${formEls[1].name}=${btoa(roomValue)}` || `http://localhost:3000/chat.html?${formEls[0].name}=${btoa(usernameValue)}&${formEls[1].name}=${btoa(roomValue)}`
 })
 
 // On invited url
@@ -39,7 +39,7 @@ function newRoom(){
        swal("Please choose a room name.").then(() => newRoom())
        return;
     } else {
-      window.location = `https://my-coffee-chat.herokuapp.com/chat.html?v53r=${username.value}&r0o3=${roomName}`
+      window.location = `https://my-coffee-chat.herokuapp.com/chat.html?v53r=${username.value}&r0o3=${roomName}` || `http://localhost:3000/chat.html?v53r=${username.value}&r0o3=${roomName}`
     }
   })
 }
