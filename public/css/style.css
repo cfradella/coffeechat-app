@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
 @media screen and (max-width: 768px) {
-  .coffee-logo {
+  #logo-h1 {
     display: none;
   }
 }
