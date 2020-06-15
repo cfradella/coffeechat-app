@@ -10,41 +10,28 @@ loginForm.addEventListener('submit', e => {
   // Base64 encoding for data obfuscation
   let usernameValue = formEls[0].value;
   let roomValue = formEls[1].value;
-  // usernameValue = btoa(usernameValue);
-  // roomValue = btoa(roomValue);
 
-  // socket.emit('regular-join', [usernameValue, roomValue]);
-  window.location = `https://my-coffee-chat.herokuapp.com/chat.html?${formEls[0].name}=${btoa(usernameValue)}&${formEls[1].name}=${btoa(roomValue)}` || `http://localhost:3000/chat.html?${formEls[0].name}=${btoa(usernameValue)}&${formEls[1].name}=${btoa(roomValue)}`
+  window.location = `https://my-coffee-chat.herokuapp.com/chat.html?${formEls[0].name}=${btoa(usernameValue)}&${formEls[1].name}=${btoa(roomValue)}`
 })
 
-// On invited url
-// socket.on('invited', () => {
-//   invitedUserChooseUsername()
-//     .then( invitedUserName => {
-//       const u = btoa(invitedUserName);
-//       const r = btoa('room');
-//       window.location = `http://localhost:3000/chat.html?v53r=${u}&r0o3=${r}`
-//     })
-// })
-
-function newRoom(){
+function createNewRoom(){
   if (username.value.trim() =='') {
     swal("Please choose a username.")
     username.value = '';
     return;
   }
-  chooseRoom()
+  chooseRoomName()
   .then(roomName => {
     if (roomName.trim() === '') {
-       swal("Please choose a room name.").then(() => newRoom())
+       swal("Please choose a room name.").then(() => createNewRoom())
        return;
     } else {
-      window.location = `https://my-coffee-chat.herokuapp.com/chat.html?v53r=${username.value}&r0o3=${roomName}` || `http://localhost:3000/chat.html?v53r=${username.value}&r0o3=${roomName}`
+      window.location = `https://my-coffee-chat.herokuapp.com/chat.html?v53r=${btoa(username.value)}&r0o3=${btoa(roomName)}`
     }
   })
 }
 
-function chooseRoom(){
+function chooseRoomName(){
   return swal({
     text: 'What room would you like to join?',
     content: "input",

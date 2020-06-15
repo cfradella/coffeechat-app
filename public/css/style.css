@@ -19,9 +19,8 @@
 body {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 16px;
-	background: linear-gradient(to right, #0d262e, #1D4350, #0d262e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-	margin: 20px;
+	background: linear-gradient(to right, #0d262e, #1D4350, #0d262e);
+	/* margin: 20px; */
 }
 
 ul {
@@ -50,17 +49,25 @@ i {
 
 .btn {
 	/* border: 3px solid orange; */
-	border: 2px solid var(--dark-color-a);
+	/* border: 2px solid var(--dark-color-a); */
+	border: 0;
 	cursor: pointer;
-	padding: 5px 15px;
-	background: white;
+	padding: 5px 10px;
+	background-color: white;
 	color: #424242;
 	border-radius: 10px;
 	font-size: 17px;
-	font-weight: 1000;
+	font-weight: 800;
+	box-shadow: 1px 1px 3px #2e2e2e;
 }
+
 .btn:hover {
 	opacity: 80%
+}
+
+.btn:active {
+	opacity: 100%;
+	box-shadow: 1px 1px 10px #2e2e2e;
 }
 
 /* Chat Page */
@@ -168,13 +175,18 @@ i {
 }
 
 .coffee-logo {
-	height: 32px;
-	width: 32px;
-	margin: 0px 8px;
+	height: 70px;
+	width: 70px;
 }
 
-#invite-btn {
-	
+h1 .coffee-logo {
+	height: 32px;
+	width: 32px;
+	margin: 0px 10px
+}
+
+#invite-logo {
+	padding: 20px
 }
 
 /* Join Page */
@@ -187,7 +199,7 @@ i {
 
 .join-header {
 	text-align: center;
-	padding: 20px;
+	padding: 5px 0px 10px 0px;
 	background: var(--dark-color-a);
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
@@ -236,8 +248,8 @@ i {
 	align-items: center;
 	justify-content: center;
 	margin: 0 auto;
-	background-color: #bf5e26;
-	color: white;
+	border: 1px solid var(--dark-color-b);
+	color: black;
 }
 
 input:focus, select:focus, button:focus {
@@ -252,7 +264,7 @@ input:focus, select:focus, button:focus {
 	/* margin-left: 15px; */
 }
 
-.logo-c, h1, h2, h3, label, select, li {
+.logo-c, h1, h2, h3, label, select, li, a, button {
 	cursor: default;
 	user-select: none;
 }

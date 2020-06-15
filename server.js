@@ -2,15 +2,21 @@ const path = require('path');
 const http = require('http');
 const express = require('express');
 const socketio = require('socket.io');
+const isBase64 = require('is-base64');
 const formatMessage = require('./utils/messages');
 const { userJoin, getCurrentUser, userLeave, getRoomUsers } = require('./utils/users');
 
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
-// const router = express.Router();
+
+// 'Keep Alive' for the socket connection
+io.set('heartbeat timeout', 4000);
+io.set('heartbeat interval', 2000);
 
 const admin = 'admin';
+
+
 
 app.use(express.static(path.join(__dirname, 'public')))
 
@@ -31,12 +37,12 @@ io.on('connection', socket => {
     socket.emit('bing', true);
 
     // Welcome current user
-    socket.emit('message', formatMessage(admin, `You have joined ${room} chat.`, true))
+    socket.emit('message', formatMessage(admin, `- You have joined ${room} chat. -`, true))
 
     // When a user connects
     socket.broadcast.to(user.room).emit(
       'message',
-      formatMessage(admin, `${user.username} has joined the chat.`, true))
+      formatMessage(admin, `- ${user.username} has joined the chat. -`, true))
 
     // Send users and room info
     io.to(user.room).emit('roomUsers', {
@@ -51,12 +57,18 @@ io.on('connection', socket => {
     io.to(user.room).emit('message', formatMessage(user.username, msg, false))
   })
 
+  // Checking if the username and room are encoded as Base64
+  socket.on('isBase64', str => {
+    console.log(isBase64(str[0]))
+    socket.emit('base64Checked', [isBase64(str[0]), isBase64(str[1])])
+  })
+
   // When a user disconnects
   socket.on('disconnect', () => {
     const user = userLeave(socket.id);
 
     if (user) {
-      io.to(user.room).emit('message', formatMessage(admin, `${user.username} has left the chat.`, true))
+      io.to(user.room).emit('message', formatMessage(admin, `- ${user.username} has left the chat. -`, true))
 
       // Send users and room info
       io.to(user.room).emit('roomUsers', {

@@ -10,38 +10,26 @@ let { v53r, r0o3 } = Qs.parse(location.search, {
   ignoreQueryPrefix: true
 });
 
-// Decode from Base64
-// try {
-//   v53r = atob(v53r)
-//   r0o3 = atob(r0o3)
-// } catch(e) {
-//
-// }
-if (v53r && v53r[v53r.length-1] == "=") v53r = atob(v53r);
-if (r0o3 && r0o3[r0o3.length-1] == "=") r0o3 = atob(r0o3);
+if (isBase64Enc(v53r)) v53r = atob(v53r)
+if (isBase64Enc(r0o3)) r0o3 = atob(r0o3)
 
-const username = v53r || null;
-const room = r0o3 || null;
+let username = v53r;
+let room = r0o3;
+
+// let username = isBase64Enc(v53r) ? atob(v53r) : v53r;
+// let room = isBase64Enc(r0o3) ? atob(r0o3) : r0o3;
 
 socket.on('invited', invitedRoom => {
   if (window.location.href.indexOf('invite') == -1) return;
   invitedUserChooseUsername(invitedRoom)
     .then( invitedUserName => {
-      const u = invitedUserName;
+      const givenUser = btoa(invitedUserName);
       // const r = btoa(invitedRoom);
-      window.location = `https://my-coffee-chat.herokuapp.com/chat.html?v53r=${u}&r0o3=${invitedRoom}` || `http://localhost:3000/chat.html?v53r=${u}&r0o3=${invitedRoom}`
+      window.location = `https://my-coffee-chat.herokuapp.com/chat.html?v53r=${givenUser}&r0o3=${invitedRoom}`
     })
 })
 
-socket.on('regular-join', datam => {
-  let { v53r, r0o3 } = Qs.parse(location.search, {
-    ignoreQueryPrefix: true
-  });
-  username = atob(v53r);
-  room = atob(r0o3);
-})
-
-socket.emit('joinRoom', { username, room });
+if (username != null) socket.emit('joinRoom', { username, room });
 
 // Get room and Users
 socket.on('roomUsers', ({ room, users}) => {
@@ -152,5 +140,22 @@ function invitedUserChooseUsername(){
 
 function createdInviteUserLink(){
   return swal(`Share the following URL to invite someone to this chat!\n\nhttps://my-coffee-chat.herokuapp.com/invite?r0o3=${btoa(r0o3)}`)
+}
 
+function helpButton(){
+  return swal("\
+    CoffeeChat is chatroom app that allows for multi-person \
+    private and public chatrooms while not storing any of its \
+    user's data. All conversations are deleted when a room no \
+    longer has any users in it and none of the conversations \
+    are stored in a database/server.")
+}
+
+function isBase64Enc(val){
+  try {
+    atob(val);
+  } catch (e){
+    return false;
+  }
+  return true;
 }

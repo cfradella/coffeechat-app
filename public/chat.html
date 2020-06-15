@@ -13,10 +13,12 @@
   <audio id ="bing-sound" src="https://freesound.org/data/previews/91/91926_7037-lq.mp3"></audio>
   <div class="chat-container">
     <header class="chat-header">
-      <h1 id='logo-h1'><img class="coffee-logo" src="https://image.flaticon.com/icons/png/512/2935/2935413.png"></img><span class="logo-c"> C</span>offee<span class="logo-c">C</span>hat</h1>
+      <h1 id='logo-h1'><img id="cl" class="coffee-logo" src="https://image.flaticon.com/icons/png/512/2935/2935413.png"></img><span style="color:#f29c20">Coffee</span>Chat</h1>
       <div>
-        <button onclick="createdInviteUserLink()" id="invite-btn" class="btn">Invite</button>
-        <a id="leave-room" href="index.html" class="btn">Leave Room</a>
+        <a class="btn"><span class="fas fa-bug"></span></a>
+        <a onclick="helpButton()" class="btn"><span class="fas fa-question"></span></a>
+        <a onclick="createdInviteUserLink()" id="invite-btn" class="btn"><i class="fas fa-user-plus"></i>Invite</img></a>
+        <a href="index.html" id="leave-room" class="btn"><i class="fas fa-sign-out-alt"></i>Leave Room</a>
       </div>
     </header>
     <main class="chat-main">
