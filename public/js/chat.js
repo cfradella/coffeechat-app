@@ -151,6 +151,11 @@ function helpButton(){
     are stored in a database/server.")
 }
 
+function bugButton(){
+  return swal("\
+    Found a bug? Please send any bug reports to cfradella@gmail.com.")
+}
+
 function isBase64Enc(val){
   try {
     atob(val);
