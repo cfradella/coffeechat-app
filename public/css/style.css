@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
+@media screen and (max-width: 768px) {
+  .coffee-logo {
+    display: none;
+  }
+}
+
 :root {
 	--dark-color-a: #a63e02;
 	--dark-color-b: #cc692f;
