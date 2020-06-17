@@ -2,7 +2,8 @@ const path = require('path');
 const http = require('http');
 const express = require('express');
 // const secure = require('ssl-express-www');
-const enforce = require('express-sslify');
+// const enforce = require('express-sslify');
+const sslRedirect = require('heroku-ssl-redirect');
 const socketio = require('socket.io');
 const isBase64 = require('is-base64');
 const formatMessage = require('./utils/messages');
@@ -18,9 +19,10 @@ io.set('heartbeat interval', 2000);
 
 const admin = 'admin';
 
-app.use(enforce.HTTPS());
-app.use(express.static(path.join(__dirname, 'public')))
 // app.use(secure);
+// app.use(enforce.HTTPS());
+app.use(sslRedirect());
+app.use(express.static(path.join(__dirname, 'public')))
 
 // app.get('*', function(req,res,next) {
 //   if(req.headers['x-forwarded-proto'] != 'https')
