@@ -22,6 +22,13 @@ const admin = 'admin';
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(secure);
 
+app.get('*', function(req,res,next) {
+  if(req.headers['x-forwarded-proto'] != 'https')
+    res.redirect('https://'+req.hostname+req.url)
+  else
+    next() /* Continue to other routes if we're not redirecting */
+});
+
 app.get('/invite', (req, res) => {
   const invitedRoom = req.query.r0o3
   console.log("Current room: " + invitedRoom);
