@@ -139,7 +139,7 @@ function invitedUserChooseUsername(){
 }
 
 function createdInviteUserLink(){
-  return swal(`Share the following URL to invite someone to this chat!\n\nhttp://www.chatwithcoffee.com/invite?r0o3=${btoa(r0o3)}`)
+  return swal(`Share the following URL to invite someone to this chat!\n\nchatwithcoffee.com/invite?r0o3=${btoa(r0o3)}`)
 }
 
 function helpButton(){
