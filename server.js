@@ -1,8 +1,6 @@
 const path = require('path');
 const http = require('http');
 const express = require('express');
-// const secure = require('ssl-express-www');
-// const enforce = require('express-sslify');
 const sslRedirect = require('heroku-ssl-redirect');
 const socketio = require('socket.io');
 const isBase64 = require('is-base64');
@@ -19,21 +17,11 @@ io.set('heartbeat interval', 2000);
 
 const admin = 'admin';
 
-// app.use(secure);
-// app.use(enforce.HTTPS());
 app.use(sslRedirect());
 app.use(express.static(path.join(__dirname, 'public')))
 
-// app.get('*', function(req,res,next) {
-//   if(req.headers['x-forwarded-proto'] != 'https')
-//     res.redirect('https://'+req.hostname+req.url)
-//   else
-//     next() /* Continue to other routes if we're not redirecting */
-// });
-
 app.get('/invite', (req, res) => {
   const invitedRoom = req.query.r0o3
-  console.log("Current room: " + invitedRoom);
   res.sendFile('public/chat.html', { root: __dirname });
   io.on('connection', socket => {
     socket.emit('invited', invitedRoom);
@@ -48,12 +36,12 @@ io.on('connection', socket => {
     socket.emit('bing', true);
 
     // Welcome current user
-    socket.emit('message', formatMessage(admin, `- You have joined ${room} chat. -`, true))
+    socket.emit('message', formatMessage(admin, `- You have joined ${room} chat -`, true))
 
     // When a user connects
     socket.broadcast.to(user.room).emit(
       'message',
-      formatMessage(admin, `- ${user.username} has joined the chat. -`, true))
+      formatMessage(admin, `- ${user.username} has joined the chat -`, true))
 
     // Send users and room info
     io.to(user.room).emit('roomUsers', {
@@ -79,7 +67,7 @@ io.on('connection', socket => {
     const user = userLeave(socket.id);
 
     if (user) {
-      io.to(user.room).emit('message', formatMessage(admin, `- ${user.username} has left the chat. -`, true))
+      io.to(user.room).emit('message', formatMessage(admin, `- ${user.username} has left the chat -`, true))
 
       // Send users and room info
       io.to(user.room).emit('roomUsers', {

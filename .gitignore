@@ -1,0 +1,6 @@
+node_modules/
+.DS_Store
+chatwithcoffee_com.ca-bundle
+chatwithcoffee_com.crt
+chatwithcoffee.csr
+server.key
