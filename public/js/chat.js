@@ -25,7 +25,7 @@ socket.on('invited', invitedRoom => {
     .then( invitedUserName => {
       const givenUser = btoa(invitedUserName);
       // const r = btoa(invitedRoom);
-      window.location = `https://my-coffee-chat.herokuapp.com/chat.html?v53r=${givenUser}&r0o3=${invitedRoom}`
+      window.location = `http://www.chatwithcoffee.com/chat.html?v53r=${givenUser}&r0o3=${invitedRoom}`
     })
 })
 
@@ -139,7 +139,7 @@ function invitedUserChooseUsername(){
 }
 
 function createdInviteUserLink(){
-  return swal(`Share the following URL to invite someone to this chat!\n\nhttps://my-coffee-chat.herokuapp.com/invite?r0o3=${btoa(r0o3)}`)
+  return swal(`Share the following URL to invite someone to this chat!\n\nhttp://www.chatwithcoffee.com/invite?r0o3=${btoa(r0o3)}`)
 }
 
 function helpButton(){
@@ -153,7 +153,7 @@ function helpButton(){
 
 function bugButton(){
   return swal("\
-    Found a bug? Please send any bug reports to cfradella@gmail.com.")
+    Found a bug? Please send any bug reports to admin@chatwithcoffee.com.")
 }
 
 function isBase64Enc(val){
