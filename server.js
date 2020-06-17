@@ -18,8 +18,8 @@ io.set('heartbeat interval', 2000);
 
 const admin = 'admin';
 
-app.use(express.static(path.join(__dirname, 'public')))
 app.use(enforce.HTTPS());
+app.use(express.static(path.join(__dirname, 'public')))
 // app.use(secure);
 
 // app.get('*', function(req,res,next) {
