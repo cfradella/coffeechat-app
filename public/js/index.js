@@ -11,7 +11,7 @@ loginForm.addEventListener('submit', e => {
   let usernameValue = formEls[0].value;
   let roomValue = formEls[1].value;
 
-  window.location = `http://www.chatwithcoffee.com/chat.html?${formEls[0].name}=${btoa(usernameValue)}&${formEls[1].name}=${btoa(roomValue)}`
+  window.location = `https://www.chatwithcoffee.com/chat.html?${formEls[0].name}=${btoa(usernameValue)}&${formEls[1].name}=${btoa(roomValue)}`
 })
 
 function createNewRoom(){
@@ -26,7 +26,7 @@ function createNewRoom(){
        swal("Please choose a room name.").then(() => createNewRoom())
        return;
     } else {
-      window.location = `http://www.chatwithcoffee.com/chat.html?v53r=${btoa(username.value)}&r0o3=${btoa(roomName)}`
+      window.location = `https://www.chatwithcoffee.com/chat.html?v53r=${btoa(username.value)}&r0o3=${btoa(roomName)}`
     }
   })
 }

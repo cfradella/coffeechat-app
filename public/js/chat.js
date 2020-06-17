@@ -25,7 +25,7 @@ socket.on('invited', invitedRoom => {
     .then( invitedUserName => {
       const givenUser = btoa(invitedUserName);
       // const r = btoa(invitedRoom);
-      window.location = `http://www.chatwithcoffee.com/chat.html?v53r=${givenUser}&r0o3=${invitedRoom}`
+      window.location = `https://www.chatwithcoffee.com/chat.html?v53r=${givenUser}&r0o3=${invitedRoom}`
     })
 })
 
