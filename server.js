@@ -1,6 +1,7 @@
 const path = require('path');
 const http = require('http');
 const express = require('express');
+const secure = require('ssl-express-www');
 const socketio = require('socket.io');
 const isBase64 = require('is-base64');
 const formatMessage = require('./utils/messages');
@@ -19,6 +20,7 @@ const admin = 'admin';
 
 
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(secure);
 
 app.get('/invite', (req, res) => {
   const invitedRoom = req.query.r0o3
