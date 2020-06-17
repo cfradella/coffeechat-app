@@ -2,7 +2,7 @@ const path = require('path');
 const http = require('http');
 const express = require('express');
 // const secure = require('ssl-express-www');
-// const enforce = require('express-sslify');
+const enforce = require('express-sslify');
 const socketio = require('socket.io');
 const isBase64 = require('is-base64');
 const formatMessage = require('./utils/messages');
@@ -18,7 +18,7 @@ io.set('heartbeat interval', 2000);
 
 const admin = 'admin';
 
-// app.use(enforce.HTTPS());
+app.use(enforce.HTTPS());
 app.use(express.static(path.join(__dirname, 'public')))
 // app.use(secure);
 
@@ -28,16 +28,6 @@ app.use(express.static(path.join(__dirname, 'public')))
 //   else
 //     next() /* Continue to other routes if we're not redirecting */
 // });
-
-app.use (function (req, res, next) {
-        if (req.secure) {
-                // request was via https, so do no special handling
-                next();
-        } else {
-                // request was via http, so redirect to https
-                res.redirect('https://' + req.headers.host + req.url);
-        }
-});
 
 app.get('/invite', (req, res) => {
   const invitedRoom = req.query.r0o3
