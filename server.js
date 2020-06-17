@@ -22,11 +22,21 @@ const admin = 'admin';
 app.use(express.static(path.join(__dirname, 'public')))
 // app.use(secure);
 
-app.get('*', function(req,res,next) {
-  if(req.headers['x-forwarded-proto'] != 'https')
-    res.redirect('https://'+req.hostname+req.url)
-  else
-    next() /* Continue to other routes if we're not redirecting */
+// app.get('*', function(req,res,next) {
+//   if(req.headers['x-forwarded-proto'] != 'https')
+//     res.redirect('https://'+req.hostname+req.url)
+//   else
+//     next() /* Continue to other routes if we're not redirecting */
+// });
+
+app.use (function (req, res, next) {
+        if (req.secure) {
+                // request was via https, so do no special handling
+                next();
+        } else {
+                // request was via http, so redirect to https
+                res.redirect('https://' + req.headers.host + req.url);
+        }
 });
 
 app.get('/invite', (req, res) => {
