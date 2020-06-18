@@ -10,8 +10,11 @@ let { v53r, r0o3 } = Qs.parse(location.search, {
   ignoreQueryPrefix: true
 });
 
-let username = isBase64Enc(v53r) ? atob(v53r) : v53r;
-let room = isBase64Enc(r0o3) ? atob(r0o3) : r0o3;
+if (isBase64Enc(v53r)) v53r = atob(v53r)
+if (isBase64Enc(r0o3)) r0o3 = atob(r0o3)
+
+let username = v53r;
+let room = r0o3;
 
 socket.on('invited', invitedRoom => {
   if (window.location.href.indexOf('invite') == -1) return;
