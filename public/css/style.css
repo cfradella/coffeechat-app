@@ -331,6 +331,13 @@ input:focus, select:focus, button:focus {
 	font-size: 12px;
 }
 
+/* Chat Menu Buttons*/
+
+#bug-btn, #leave-btn, #help-btn, #invite-btn {
+  margin-left: 5px;
+}
+
+
 @media (max-width: 700px) {
 	.chat-main {
 		display: block;

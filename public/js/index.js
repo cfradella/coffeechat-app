@@ -5,9 +5,8 @@ const socket = io();
 loginForm.addEventListener('submit', e => {
   e.preventDefault();
 
-  const formEls = e.srcElement;
-
   // Base64 encoding for data obfuscation
+  const formEls = e.srcElement;
   let usernameValue = formEls[0].value;
   let roomValue = formEls[1].value;
 
