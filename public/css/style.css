@@ -7,13 +7,9 @@
 }
 
 :root {
-	--dark-color-a: #a63e02;
-	--dark-color-b: #cc692f;
+	--theme-color-a: #a63e02;
+	--theme-color-b: #cc692f;
 	--light-color: white;
-	--success-color: #5cb85c;
-	--error-color: #d9534f;
-	--logo-color: #e64c3b;
-	--hightlight: #7cd1f9;
 }
 
 * {
@@ -26,7 +22,6 @@ body {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 16px;
 	background: linear-gradient(to right, #0d262e, #1D4350, #0d262e);
-	/* margin: 20px; */
 }
 
 ul {
@@ -54,8 +49,6 @@ i {
 }
 
 .btn {
-	/* border: 3px solid orange; */
-	/* border: 2px solid var(--dark-color-a); */
 	border: 0;
 	cursor: pointer;
 	padding: 5px 10px;
@@ -77,7 +70,6 @@ i {
 }
 
 /* Chat Page */
-
 .chat-container {
 	max-width: 1100px;
 	background: #fff;
@@ -89,7 +81,7 @@ i {
 }
 
 .chat-header {
-	background: var(--dark-color-a);
+	background: var(--theme-color-a);
 	color: #fff;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
@@ -116,7 +108,7 @@ i {
 }
 
 .chat-sidebar {
-	background: var(--dark-color-b);
+	background: var(--theme-color-b);
 	color: #fff;
 	padding: 20px 20px 60px;
 	overflow-y: scroll;
@@ -155,7 +147,7 @@ i {
 .chat-messages .message .meta {
 	font-size: 15px;
 	font-weight: bold;
-	color: var(--dark-color-b);
+	color: var(--theme-color-b);
 	opacity: 0.7;
 	margin-bottom: 7px;
 }
@@ -166,7 +158,7 @@ i {
 
 .chat-form-container {
 	padding: 20px 30px;
-	background-color: var(--dark-color-a);
+	background-color: var(--theme-color-a);
 }
 
 .chat-form-container form {
@@ -188,7 +180,7 @@ i {
 h1 .coffee-logo {
 	height: 32px;
 	width: 32px;
-	margin: 0px 10px
+	margin-left: 10px
 }
 
 #invite-logo {
@@ -206,14 +198,14 @@ h1 .coffee-logo {
 .join-header {
 	text-align: center;
 	padding: 5px 0px 10px 0px;
-	background: var(--dark-color-a);
+	background: var(--theme-color-a);
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 }
 
 .join-main {
 	padding: 30px 40px;
-	background: var(--dark-color-b);
+	background: var(--theme-color-b);
 }
 
 .join-main p {
@@ -254,7 +246,7 @@ h1 .coffee-logo {
 	align-items: center;
 	justify-content: center;
 	margin: 0 auto;
-	border: 1px solid var(--dark-color-b);
+	border: 1px solid var(--theme-color-b);
 	color: black;
 }
 
@@ -263,12 +255,9 @@ input:focus, select:focus, button:focus {
 }
 
 .logo-c {
-	color: white /* #e6a47e; */
+	color: white;
 }
 
-#logo-h1 {
-	/* margin-left: 15px; */
-}
 
 .logo-c, h1, h2, h3, label, select, li, a, button {
 	cursor: default;
@@ -282,8 +271,6 @@ input:focus, select:focus, button:focus {
 #room-dropdown, #new-room-btn {
 	/* box-sizing:content-box; */
 	border:0;
-	/* padding: 5px; */
-	/* height:40px; */
 	font-size: 16px;
 }
 
@@ -292,7 +279,7 @@ input:focus, select:focus, button:focus {
 }
 
 .swal-button {
-	background-color: var(--dark-color-b);
+	background-color: var(--theme-color-b);
 	font-weight: normal;
 }
 
@@ -306,7 +293,7 @@ input:focus, select:focus, button:focus {
 	margin: 0 auto;
 	border: 3px solid transparent;
 	background-color: white;
-	color: var(--dark-color-a);
+	color: var(--theme-color-a);
 	text-align: center;
 	cursor: pointer;
 	/* display: table-cell;
@@ -327,6 +314,7 @@ input:focus, select:focus, button:focus {
 	display: flex;
 	align-items: center;
 }
+
 .text {
 	padding-top: 5px;
 }

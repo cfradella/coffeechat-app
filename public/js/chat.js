@@ -10,21 +10,21 @@ let { v53r, r0o3 } = Qs.parse(location.search, {
   ignoreQueryPrefix: true
 });
 
-if (isBase64Enc(v53r)) v53r = atob(v53r)
-if (isBase64Enc(r0o3)) r0o3 = atob(r0o3)
+// if (isBase64Enc(v53r)) v53r = atob(v53r)
+// if (isBase64Enc(r0o3)) r0o3 = atob(r0o3)
+// 
+// let username = v53r;
+// let room = r0o3;
 
-let username = v53r;
-let room = r0o3;
+let username = isBase64Enc(v53r) ? atob(v53r) : v53r;
+let room = isBase64Enc(r0o3) ? atob(r0o3) : r0o3;
 
-// let username = isBase64Enc(v53r) ? atob(v53r) : v53r;
-// let room = isBase64Enc(r0o3) ? atob(r0o3) : r0o3;
 
 socket.on('invited', invitedRoom => {
   if (window.location.href.indexOf('invite') == -1) return;
   invitedUserChooseUsername(invitedRoom)
     .then( invitedUserName => {
       const givenUser = btoa(invitedUserName);
-      // const r = btoa(invitedRoom);
       window.location = `https://www.chatwithcoffee.com/chat.html?v53r=${givenUser}&r0o3=${invitedRoom}`
     })
 })
@@ -46,14 +46,6 @@ socket.on('message', message => {
   // Scroll down
   chatMessages.scrollTop = chatMessages.scrollHeight;
 })
-
-// Bing sound on log in
-// socket.on('bing', () => {
-//   const bing = document.getElementById('bing-sound');
-//   setTimeout(() => {
-//     bing.play();
-//   }, 100)
-// })
 
 // Message submit
 chatForm.addEventListener('submit', e => {

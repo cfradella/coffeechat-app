@@ -17,6 +17,7 @@ io.set('heartbeat interval', 2000);
 
 const admin = 'admin';
 
+// Force SSL
 app.use(sslRedirect());
 app.use(express.static(path.join(__dirname, 'public')))
 
@@ -32,6 +33,7 @@ io.on('connection', socket => {
   socket.on('joinRoom', ({ username, room }) => {
     const user = userJoin(socket.id, username, room);
 
+    // Join named room
     socket.join(user.room);
     socket.emit('bing', true);
 
