@@ -29,6 +29,7 @@ app.get('/invite', (req, res) => {
   })
 })
 
+// When connecting to app
 io.on('connection', socket => {
   socket.on('joinRoom', ({ username, room }) => {
     const user = userJoin(socket.id, username, room);

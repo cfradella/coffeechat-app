@@ -13,6 +13,7 @@ loginForm.addEventListener('submit', e => {
   window.location = `https://www.chatwithcoffee.com/chat.html?${formEls[0].name}=${btoa(usernameValue)}&${formEls[1].name}=${btoa(roomValue)}`
 })
 
+// Prompt for creating a new room
 function createNewRoom(){
   if (username.value.trim() =='') {
     swal("Please choose a username.")
@@ -20,16 +21,18 @@ function createNewRoom(){
     return;
   }
   chooseRoomName()
-  .then(roomName => {
-    if (roomName.trim() === '') {
-       swal("Please choose a room name.").then(() => createNewRoom())
-       return;
+    .then(roomName => {
+      if (roomName.trim() === '') {
+        swal("Please choose a room name.")
+          .then(() => createNewRoom())
+      return;
     } else {
       window.location = `https://www.chatwithcoffee.com/chat.html?v53r=${btoa(username.value)}&r0o3=${btoa(roomName)}`
     }
   })
 }
 
+// Prompt for choosing a room name
 function chooseRoomName(){
   return swal({
     text: 'What room would you like to join?',
